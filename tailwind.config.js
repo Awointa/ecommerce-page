@@ -3,7 +3,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      screens: { xs: "340px" },
+      screens: { xs: "220px", md: "664px" },
       fontFamily: {
         kumbh: "Kumbh Sans",
       },

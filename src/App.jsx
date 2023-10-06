@@ -1,9 +1,12 @@
 import Layout from "./components/Layout/Layout";
+import ModalContextProvider from "./contexts/ModalContext";
 
 const App = () => {
   return (
     <div className="App font-kumbh">
-      <Layout />
+      <ModalContextProvider>
+        <Layout />
+      </ModalContextProvider>
     </div>
   );
 };

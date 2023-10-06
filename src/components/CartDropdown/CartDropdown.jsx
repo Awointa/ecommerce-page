@@ -3,7 +3,7 @@ import AddedItem from "../../assets/image-product-1-thumbnail.jpg";
 import DiscountPrice from "../DiscountPrice/DiscountPrice";
 import TotalPrice from "../TotalPrice/TotalPrice";
 
-const cartInfo = ({ showCart, cartItems, deletItem }) => {
+const CartDropdown = ({ showCart, cartItem, deleteItem }) => {
   const isOpen = showCart ? "" : "none";
   return (
     <div
@@ -13,9 +13,9 @@ const cartInfo = ({ showCart, cartItems, deletItem }) => {
       <h2 className="text-lg font-bold pb-5 border-b-[0.5px] border-solid border-b-grayishblue">
         Cart
       </h2>
-      {cartItems.length ? (
+      {cartItem.length ? (
         <div>
-          {cartItems.map((item) => (
+          {cartItem.map((item) => (
             <div className="flex flex-col gap-5" key={item.id}>
               <div className="flex flex-col justify-between mt-5">
                 <div className="flex justify-between items-center text-darkgrayishblue">
@@ -24,19 +24,27 @@ const cartInfo = ({ showCart, cartItems, deletItem }) => {
                     <span className="">{item.title}</span>
                     <div className="flex ">
                       <span className="flex items-center gap-2">
-                        <DiscountPrice
-                          price={item.price}
-                          percentDiscount={item.discount}
-                        />{" "}
-                        * <span>{item.quantity}</span>
+                        {item.quantity >= 1 ? (
+                          <div>
+                            <DiscountPrice
+                              price={item.price}
+                              percentDiscount={item.discount}
+                            />{" "}
+                            * <span>{item.quantity}</span>
+                          </div>
+                        ) : null}
                         <span className="">
-                          <TotalPrice price={item.price} percentDiscount={item.discount} quantity={item.quantity}/>
+                          <TotalPrice
+                            price={item.price}
+                            percentDiscount={item.discount}
+                            quantity={item.quantity}
+                          />
                         </span>
                       </span>
                     </div>
                     <img src="" alt="" />
                   </div>
-                  <div onClick={deletItem}>
+                  <div onClick={() => deleteItem(item.id)}>
                     <img src={DeleteIcon} alt="" />
                   </div>
                 </div>
@@ -56,4 +64,4 @@ const cartInfo = ({ showCart, cartItems, deletItem }) => {
   );
 };
 
-export default cartInfo;
+export default CartDropdown;

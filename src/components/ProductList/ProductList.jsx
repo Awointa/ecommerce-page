@@ -1,25 +1,23 @@
 import Quantifier from "../Quantifier/Quantifier";
 import PriceComponent from "../PriceComponent/PriceComponent";
 
-import discount from '../DiscountPrice/DiscountPrice'
-
 const ProductDetails = (props) => {
   const products = props.products;
   return products.map((product) => (
     <section
       key={product.id}
-      className="flex flex-col justify-center mt-4 lg:mt-0 mb-24 min-w-[90%]  mx-[20px] border-solid border-3 border-blackopacity container"
+      className="flex flex-col gap-1 lg:gap-2 justify-center  xs:mt-4 sm:mt-0 mb-24 sm:mb-0 xs:mx-5 sm:mx-0 min-w-fit container"
     >
-      <h2 className="text-orange font-bold ">SNEAKER COMPANY</h2>
+      <h2 className="text-orange font-bold">SNEAKER COMPANY</h2>
       <h3 className="text-darkblue font-black text-3xl mt-4">
         {product.title}
       </h3>
-      <p className="text-darkgrayishblue mt-4">{product.discription}</p>
+      <p className="text-darkgrayishblue">{product.discription}</p>
       <PriceComponent
         price={product.price}
         percentDiscount={product.discount}
       />
-      <div className="flex flex-col items-center gap-4 mt-6 lg:flex-row">
+      <div className="flex flex-col items-center gap-4 mt-6 lg:flex-row justify-self-center">
         <Quantifier
           clickToAddQuantity={props.addQuantity}
           clickToReduceQuantity={props.reduceQuantity}
@@ -27,7 +25,7 @@ const ProductDetails = (props) => {
         />
         <button
           onClick={() => {
-            props.addToCart(product, product.id);
+            props.addToCart(product);
           }}
           className="text-white w-full bg-orange rounded-lg py-4 cursor-pointer flex justify-center content-center gap-2 "
         >

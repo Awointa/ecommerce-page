@@ -14,7 +14,12 @@ const ShoppingCart = (props) => {
           fill-rule="nonzero"
         />
       </svg>
-      <span className="bg-orange text-white text-[.6rem] font-bold px-2 rounded-lg absolute bottom-3 left-3 flex justify-center items-center">3</span>
+
+      {props.cartItem.quantity > 0 ? (
+        <span className="bg-orange text-white text-[.6rem] font-bold px-2 rounded-lg absolute bottom-3 left-3 flex justify-center items-center">
+          {props.cartItem.quantity}
+        </span>
+      ) : null}
     </div>
   );
 };

@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-.container{
-    @apply lg:min-w-[50%] lg:px-7;
+.container {
+  @apply  lg:mx-10;
 }
+
+.directionBtn {
+  @apply  w-11 h-11 rounded-full bg-white flex items-center justify-center absolute ;
+}
+
+.img{
+ @apply max-w-full;
+}
+
